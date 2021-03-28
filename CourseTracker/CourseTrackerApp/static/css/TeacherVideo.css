@@ -1,0 +1,173 @@
+Body 
+{
+  font-family: "Merriweather", serif;
+  background-color: white;
+}label 
+{
+     float: left; 
+     margin-left: 8em;
+     font-family: "Merriweather",serif;
+     font-size: 20px
+}
+h3
+{
+     font-family: "Merriweather",serif;
+}
+button:hover 
+{ 
+     opacity: 0.5; 
+}  
+video 
+{
+    display: block;
+    margin: 0 auto;
+}  
+.container 
+{ 
+     padding: 25px; 
+     background-color: white;
+} 
+
+
+.tab {
+  overflow: hidden;
+  border: 1px solid black;
+  background-color: white;
+  margin-left: 9.4em;
+  margin-right: 9.4em;
+}
+.tab button {
+  background-color: white;
+  float: left;
+  font-family: "Merriweather",serif;
+  border:none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 244.9px;
+  transition: 0.3s;
+  font-size: 20px;
+}
+.tab button:hover {
+  background-color: #38A7E3;
+}
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  margin-left: 9.4em;
+  margin-right: 9.4em;
+}
+
+.navbar ul
+{
+  list-style-type: none;
+  margin: 0;
+  font-size: 20px;
+  padding: 12px;
+  font-family: "Merriweather",serif;
+  overflow: hidden;
+}
+.navbar ul {
+  position: absolute;
+  top: 0;
+  width: 98.8%;
+}
+.navbar li
+{
+  float: left;
+  border-right:1px solid black;
+}
+
+.navbar li:last-child {
+  border-right: none;
+}
+
+.navbar li a, .dropbtn
+{
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.navbar li a:hover:not(.active)
+{
+  color:lightblue;
+}
+
+.active
+{
+  background-color: #38A7E3;
+  border-bottom:3px solid black;
+  height: 30px;
+}
+
+#navbar_login{
+    float:right;
+    margin-right: 30px;
+}
+.dropdown 
+{
+  float:right;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: relative;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  min-width: 120px;
+  z-index: 1;
+  text-align: center;
+}
+.dropdown-content a {
+  color: black;
+  padding: 35px 35px;
+  background-color: #f1f1f1;
+  text-decoration: none;
+  display: block;
+  margin-left: 10px;
+
+}
+.dropdown-content a:hover 
+{
+  background-color: rgb(245, 245, 245);
+  color: #fff;
+}
+.dropdown:hover .dropdown-content {display: block;}
+.login_title{
+  color: #000080;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 40pt;
+}
+.button1 {
+    background-color: #008CBA; /* Green */
+    border: 2px solid #ccc;
+    color: white;
+    margin-left: 160px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+  }
+  
+  .button1:hover {
+    background-color: #ccc;
+    color: black;
+  }
+  .center{
+      margin-left: 25%;
+      font-size:x-large ;
+  }
+  
+  
+  
+   

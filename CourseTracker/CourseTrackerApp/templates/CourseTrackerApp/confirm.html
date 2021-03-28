@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm</title>
+</head>
+<body>
+<div class="navbar">
+		<ul>
+  		    <li><a href="/homepage">Home</a></li>
+  		    <li><a href="/upload_file">Upload File</a></li>
+  		    <li><a href="/upload_video">Upload Video</a></li>
+  		    <li><a href="/mainpage">Contact us</a></li>
+			{% if user.is_authenticated %}
+            <div class="dropdown">
+                <li id="navbar_login"><a href="#">{{ user.first_name }}</a></li>
+                <div class ="dropdown-content">
+                    <li id="subnavbar_logout"><a href="/logout">Logout</a></li>
+                </div>
+            {% else %}
+                <div class="dropdown">
+                    <li id="navbar_login"><a href="/login">Login</a></li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+            {% endif %}
+	        </div>
+        </ul>
+    </div>
+		<br><br><br>
+    <h1>Uploaded Succesfull!!</h1>
+</body>
+</html>

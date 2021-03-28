@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Upload File </title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/teacher_videolecture.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    	function goBack() {
+        window.history.back();
+        }
+
+        function scroll_to_top() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+
+        function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+          }
+
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+        document.getElementById(cityName).style.display = "block";
+        }
+    </script>
+</head>
+<body>
+	<div class="navbar">
+		<ul>
+  		    <li><a href="/homepage">Home</a></li>
+            <li><a href="/branch">Branch</a> </li>
+                <div class="dropdown">
+                    <li id="navbar_login"><a href="/login">Login</a></li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+        </ul>
+    </div>
+		<br><br><br>
+
+    <div class="videos_section">
+        <div class="upload_section">
+            <button>Add A Lecture</button>
+                <br><br>
+                <form method="post" action="/teacher_videolecture" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label >Lecture No. :</label>
+                    <input type="text" placeholder="Lecture no." name="lecture_no">
+                    <br><br>
+
+                    <label >Topic Name :</label>
+                    <input type="text" placeholder="Topic name " width="10px" name="topic_name" required>
+                    <br><br>
+
+                    <label >Video: </label>
+                    <input type="file" name="video_file" required>
+                    <br><br>
+
+                    <label >Notes: </label>
+                    <input type="file" name="notes_file" required>
+                    <br><br>
+
+                    <button type="submit" class="button button1">Upload</button>
+                </form>
+        </div>
+
+        <h1>Your videos</h1>
+
+        {% for file in files %}
+        <div style="display:flex;">
+            <video width="320" height="240" class="embed-responsive embed-responsive-16by9" controls="controls" >
+                <source src="{{ file.video_file.url }}" type="video/mp4" />
+            </video>
+            <h3 style="">{{ file.topic_name }}</h3>
+
+            <embed type="application/pdf" controls="controls">
+             <a href="{{file.notes_file.url }}" download>
+                 {{file.notes_file}}
+             </a>
+            <h3>{{file.notes_file}}</h3>
+        </div>
+        {% endfor %}
+    </div>
+</body>   
+</html>

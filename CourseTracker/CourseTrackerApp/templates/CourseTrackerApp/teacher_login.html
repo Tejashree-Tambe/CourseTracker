@@ -1,0 +1,72 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login </title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    	function goBack() {
+        window.history.back();
+        }
+
+        function scroll_to_top() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+<body>
+	<div class="navbar">
+		<ul>
+  		    <li><a href="/homepage">Home</a></li>
+            <li><a href="/branch">Branch</a> </li>
+                <div class="dropdown">
+                    <li id="navbar_login">Login</li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+        </ul>
+    </div>
+		<br><br><br>
+
+    <div class="background">
+        <br><br>
+        <p id="login" style="margin-left:400px;width:600px;">Teacher Login<br><p>A Student? <a href="/student_login"> Login</a></p></p>
+        <div class="social_media">
+            <button id="NotAMember"><a style="text-decoration: none;color:white" href="/teacher_signin">Not A Member? Signin</a></button>
+            <button id="Gmail"><a style="text-decoration: none;color:white" href="{% provider_login_url 'google' %}">Log in with Gmail</a></button>
+        </div>
+
+        <form action="teacher_login" method="post">
+            {% csrf_token %}
+            <center>
+                {% if messages %}
+                {% for message in messages %}
+                <code>{message}</code>
+                {% endfor %}
+                {% endif %}
+            </center>
+
+            <div class="container">
+                <input type="text" placeholder="Enter Username" name="username" required><br>
+                <input type="password" placeholder="Enter Password" name="password" required><br>
+                <input type="checkbox" checked="checked_box" style="margin-left:-20px;"> Remember me
+                <a href="#" style="margin-left:200px;">Forgot password? </a><br><br><br>
+                <button type="submit" class="button log_but">Login</button> <br>
+            </div>
+        </form>
+    </div>
+
+    <div class="end_btns">
+
+        <div class="scroll_btn">
+            <img style="right: 80px;" onclick="scroll_to_top()" src="{% static 'images/scroll_up.png' %}"></img>
+        </div>
+    </div>
+    <br><br><br><br>
+
+</body>

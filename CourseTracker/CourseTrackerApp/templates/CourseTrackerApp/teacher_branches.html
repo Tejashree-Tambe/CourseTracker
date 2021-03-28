@@ -1,0 +1,116 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Home </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function scroll_to_top() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+<body>
+	<div class="navbar">
+		<ul>
+  		    <li><a href="/homepage">Home</a></li>
+  		    <li><a href="/courses">Courses</a></li>
+                <div class="dropdown">
+                    <li id="navbar_login"><a href="/login">Login</a></li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+        </ul>
+    </div>
+<br><br><br><br>
+
+    <h1>Branches</h1>
+<div class="row">
+    <div class="column" >
+           <div class="card">
+                <a href="teacher_sem"> <img src="{% static 'images/comps1.jpg' %}" alt="Avatar" style= "width:80%" height="80%" ></a>
+           </div>
+    </div>
+<div class="column">
+    <div class="card">
+        <img src="{% static 'images/it.png' %}" alt="Avatar" style="width:80%" height="80%" >
+    </div>
+</div>
+<div class="column" >
+    <div class="card">
+         <img src="{% static 'images/extc.jpg' %}" alt="Avatar" style="width:80%" height="80%" >
+    </div>
+</div>
+</div>
+<br>
+<div class="row">
+    <div class="column" >
+          <div class="card">
+                <img src="{% static 'images/electrical.jpg' %}" alt="Avatar" style="width:80%" height="80%" >
+           </div>
+     </div>
+     <div class="column">
+            <div class="card">
+                 <img src="{% static 'images/mech.png' %}" alt="Avatar" style="width:80%" height="80%" >
+             </div>
+      </div>
+<div class="column" >
+       <div class="card">
+                <img src="{% static 'images/civil.png' %}" alt="Avatar" style="width:80%" height="80%" >
+       </div>
+       </div>
+</div>
+<br>
+<div class="row">
+    <div class="column" >
+              <div class="card">
+                  <img src="{% static 'images/biomed.jpg' %}" alt="Avatar" style="width:80%" height="80%" >
+              </div>
+     </div>
+<div class="column">
+     <div class="card">
+           <img src="{% static 'images/chem.png' %}" alt="Avatar" style="width:80%" height="80%" >
+      </div>
+</div>
+<div class="column" >
+      <div class="card">
+           <img src="{% static 'images/biotech.jpg' %}" alt="Avatar" style="width:80%" height="80%" >
+      </div>
+</div>
+</div>
+
+<script>
+function openCity(cityName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(cityName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+</script>
+    <div class="end_btns">
+        <div class="scroll_btn">
+            <img style="right: 80px;" onclick="scroll_to_top()" src="{% static 'images/scroll_up.png' %}"></img>
+        </div>
+    </div>
+    <br><br><br><br>
+
+</body>
+</html>
+
+</body>
+</html>>

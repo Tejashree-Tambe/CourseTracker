@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Home </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/subjects.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function scroll_to_top() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+<body>
+	<div class="navbar">
+		<ul>
+  		    <li><a href="/homepage">Home</a></li>
+  		    <li><a href="/branches">Branches</a></li>
+                <div class="dropdown">
+                    <li id="navbar_login"><a href="/login">Login</a></li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+        </ul>
+    </div>
+<br><br><br><br>
+
+
+  <input id="searchbar" type="text" placeholder="Enter the Subject" name="Subject" required>
+
+  <div class="schedule_appt">
+      <p><b>Subject</b></p>
+  </div>
+
+  <ul>
+      <li class="subject_name_box">
+        <h2>Subject 1 </h2>
+        <button class="details_btn" onclick="window.location.href='/teachers_lectures_list';"><span>Lectures</span></button>
+      </li>
+      <br><br><br><br><br><br>
+
+    <li class="subject_name_box">
+        <h2>Subject 2 </h2>
+        <button class="details_btn" onclick="window.location.href='/teachers_lectures_list';"><span>Lectures</span></button>
+      </li>
+      <br><br><br><br><br><br>
+
+  </ul>
+
+    <div class="end_btns">
+      <div class="backButton">
+        <img onclick="goBack()" src="{% static 'images/back_btn.png' %}"></img>
+      </div>
+
+      <div class="scroll_btn">
+        <img style="right: 80px;" onclick="scroll_to_top()" src="{% static 'images/scroll_up.png' %}"></img>
+      </div>
+    </div>
+    <br><br><br>
+
+    <div class="end">
+	</div>
+ </body>
+</html>

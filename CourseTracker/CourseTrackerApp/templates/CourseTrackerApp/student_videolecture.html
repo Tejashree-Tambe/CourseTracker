@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Upload File </title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/student_videolecture.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+        function scroll_to_top() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+
+        function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+          }
+
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+        document.getElementById(cityName).style.display = "block";
+        }
+  </script>
+</head>
+<body>
+<div class="navbar">
+		<ul>
+  		    <li><a href="/homepage">Home</a></li>
+            <li><a href="/branch">Branch</a> </li>
+                <div class="dropdown">
+                    <li id="navbar_login"><a href="/login">Login</a></li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+        </ul>
+    </div>		<br><br><br>
+    {% for file in files %}
+    <label><h1 style="width:1000px;"><i>Lecture {{file.lecture_no}}: {{file.topic_name}}</i></h1></label>
+        <br><br><br>
+    <video width=80% height=80% controls>
+        <source src="{{ file.video_file.url }}" type="video/mp4">
+    </video>
+    {% endfor %}
+
+<br><br>
+
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Tnotes')"><b>Teacher's Notes</button>
+    <button class="tablinks" onclick="openCity(event, 'Resources')"><b>Resources</button>
+  </div>
+
+  <div id="Tnotes" class="tabcontent">
+    <h3><i>Teacher's Notes</i></h3>
+    <table id="notes">
+    <col style="width:40%">
+    <col style="width:60%">
+        <th>Topic Name</th>
+        <th>File Name</th>
+        <th>Download File</th>
+        {% for file in files %}
+      <tr>
+          <td>{{file.topic_name}}</td>
+        <td>{{file.notes_file}}</td>
+        <td class="file_link"><a href="{{file.notes_file.url}}" download>{{file.notes_file}} </a></td>
+      </tr>
+        {% endfor %}
+  </table>
+</div>
+
+  <div id="Resources" class="tabcontent">
+    <h3><i>Online Resources</i></h3>
+    <p>Following are the resources...</p>
+  </div>
+
+</body>   
+</html>

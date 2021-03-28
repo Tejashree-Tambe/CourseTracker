@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Upload File </title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/upload_video.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    	function goBack() {
+        window.history.back();
+        }
+
+        function scroll_to_top() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+<body>
+	<div class="navbar">
+		<ul>
+  		    <li><a href="/homepage">Home</a></li>
+  		    <li><a href="/upload_file">Upload File</a></li>
+  		    <li><a class="active" href="/upload_video">Upload Video</a></li>
+  		    <li><a href="/mainpage">Contact us</a></li>
+			{% if user.is_authenticated %}
+            <div class="dropdown">
+                <li id="navbar_login"><a href="#">{{ user.first_name }}</a></li>
+                <div class ="dropdown-content">
+                    <li id="subnavbar_logout"><a href="/logout">Logout</a></li>
+                </div>
+            {% else %}
+                <div class="dropdown">
+                    <li id="navbar_login"><a href="/login">Login</a></li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+            {% endif %}
+	        </div>
+        </ul>
+    </div>
+		<br><br><br>
+
+    <div class="videos_section">
+        <div class="upload_section">
+            <form action="/upload_video" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="upload_button">Upload</button>
+            </form>
+        </div>
+
+        <h1>Your videos</h1>
+        <hr>
+
+        <div style="display: flex;">
+            {% for video in videos %}
+            <video width="320" height="240" class="embed-responsive embed-responsive-16by9" controls="controls" >
+                <source src="{{video.video.url}}" type="video/mp4" />
+            </video>
+            <h3>{{video.video_name}}</h3>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="end_btns">
+        <div class="backButton">
+            <img onclick="goBack()" src="{% static 'images/back_btn.png' %}"></img>
+        </div>
+
+        <div class="scroll_btn">
+            <img style="right: 80px;" onclick="scroll_to_top()" src="{% static 'images/scroll_up.png' %}"></img>
+        </div>
+    </div>
+    <br><br><br><br>
+
+</body>

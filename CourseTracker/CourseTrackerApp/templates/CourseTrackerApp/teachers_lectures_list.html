@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Upload File </title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/teachers_lectures_list.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    	function goBack() {
+        window.history.back();
+        }
+
+        function scroll_to_top() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+<body>
+	<div class="navbar">
+		<ul>
+  		    <li><a href="/homepage">Home</a></li>
+            <li><a href="/branch">Branch</a> </li>
+                <div class="dropdown">
+                    <li id="navbar_login"><a href="/login">Login</a></li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+        </ul>
+    </div>
+		<br><br><br>
+    <br><br>
+
+  <input id="searchbar" type="text" placeholder="Enter the topic name" name="username" required><br>
+
+<a href='/teacher_videolecture'><button class="button">Add Lecture</button></a>
+
+  <div class="schedule_appt">
+      <p><b>Recorded Lectures</b></p>
+  </div>
+
+  {% for file in files %}
+  <ul class="lecture_name_box_outside">
+      <li class="lecture_name_box">
+          <form method="get" action="teacher_videolecture">
+              <h2 name="lecture_no_list">Lecture {{file.lecture_no}}:</h2> <h2 name="topic_name_list"> {{file.topic_name}}</h2>
+            <button class="details_btn" onclick="window.location.href='/teacher_videolecture';"><span>Watch Lecture</span></button>
+          </form>
+      </li>
+      <br><br><br><br><br><br>
+
+  </ul>
+  {% endfor%}
+
+    <div class="end_btns">
+      <div class="backButton">
+        <img onclick="goBack()" src="{% static 'images/back_btn.png' %}"></img>
+      </div>
+
+      <div class="scroll_btn">
+        <img style="right: 80px;" onclick="scroll_to_top()" src="{% static 'images/scroll_up.png' %}"></img>
+      </div>
+    </div>
+    <br><br><br>
+
+    <div class="end">
+	</div>
+ </body>
+</html>

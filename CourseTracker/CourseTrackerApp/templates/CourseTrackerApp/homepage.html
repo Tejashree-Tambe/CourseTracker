@@ -1,0 +1,130 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Home </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function scroll_to_top() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+<body>
+	<div class="navbar">
+		<ul>
+  		    <li><a class="active" href="/homepage">Home</a></li>
+  		    <li><a href="/branches">Branches</a></li>
+                <div class="dropdown">
+                    <li id="navbar_login"><a href="/login">Login</a></li>
+                    <div class ="dropdown-content">
+                        <li id="subnavbar_logout"><a href="/student_login">Student</a></li><br>
+                        <li id="subnavbar_logout"><a href="/teacher_login">Teacher</a></li>
+                    </div>
+                </div>
+        </ul>
+    </div>
+<br><br><br><br>
+<button class="tablink" onclick="openCity('Students', this, '#38A7E3')" id="defaultOpen">Students</button>
+<button class="tablink" onclick="openCity('Teachers', this, '#38A7E3')">Teachers</button>
+<br><br><br>
+<div id="Students" class="tabcontent">
+  <img class="image" src="{% static 'images/home.jpg' %}" alt="Student Image " width=100% height=100%>
+  <div class="centered"><h1 style="color:black;">For Students</h1></div><br><br><br><br>
+  <div class="centered2" style="color:black; width: 1000px;">Watch Recorded Lectures, Access Teacher's Notes and Other Resources</div><br><br><br><br>
+  <a href="/student_login"><button class="button" id="stuLogin">Login</button></a>
+</div>
+
+<div id="Teachers" class="tabcontent">
+  <img class="image" src="{% static 'images/back3.jpg' %}" alt="Teacher Image" width=100% height=90%>
+  <div class="centered"><h1>For Teachers</h1></div><br>
+  <div class="centered2">Upload Recorded Lectures and Lecture Notes</div>
+    <a href="/teacher_login"><button class="button" id="teacherLogin">Login</button></a>
+</div>
+
+
+
+<div class="row">
+    <div class="column" >
+           <div class="card">
+                <a href="default.asp"> <img src="{% static 'images/comps1.jpg' %}" alt="Avatar" style= "width:80%" height="80%" ></a>
+           </div>
+    </div>
+<div class="column">
+    <div class="card">
+        <img src="{% static 'images/it.png' %}" alt="Avatar" style="width:80%" height="80%" >
+    </div>
+</div>
+<div class="column" >
+    <div class="card">
+         <img src="{% static 'images/extc.jpg' %}" alt="Avatar" style="width:80%" height="80%" >
+    </div>
+</div>
+</div>
+<br>
+<div class="row">
+    <div class="column" >
+          <div class="card">
+                <img src="{% static 'images/electrical.jpg' %}" alt="Avatar" style="width:80%" height="80%" >
+           </div>
+     </div>
+     <div class="column">
+            <div class="card">
+                 <img src="{% static 'images/mech.png' %}" alt="Avatar" style="width:80%" height="80%" >
+             </div>
+      </div>
+<div class="column" >
+       <div class="card">
+                <img src="{% static 'images/civil.png' %}" alt="Avatar" style="width:80%" height="80%" >
+       </div>
+       </div>
+</div>
+<br>
+<div class="row">
+    <div class="column" >
+              <div class="card">
+                  <img src="{% static 'images/biomed.jpg' %}" alt="Avatar" style="width:80%" height="80%" >
+              </div>
+     </div>
+<div class="column">
+     <div class="card">
+           <img src="{% static 'images/chem.png' %}" alt="Avatar" style="width:80%" height="80%" >
+      </div>
+</div>
+<div class="column" >
+      <div class="card">
+           <img src="{% static 'images/biotech.jpg' %}" alt="Avatar" style="width:80%" height="80%" >
+      </div>
+</div>
+</div>
+
+<script>
+function openCity(cityName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(cityName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+</script>
+    <div class="end_btns">
+        <div class="scroll_btn">
+            <img style="right: 80px;" onclick="scroll_to_top()" src="{% static 'images/scroll_up.png' %}"></img>
+        </div>
+    </div>
+    <br><br><br><br>
+
+</body>
+</html>
